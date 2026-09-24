@@ -8,6 +8,10 @@ Design system: "Heritage Athletic" — Espresso (#3E2723) + Mustard (#F2A93B),
 Playfair Display + Plus Jakarta Sans. Created in Google Stitch, then hand-converted
 into React/Tailwind components.
 
+## Live Preview
+
+https://bahawal-gymkhana.vercel.app/
+
 ## Pages (routing)
 - `/` — Home
 - `/facilities` — Tennis, squash, gym, pool, lawn, library, cigar room, snooker
