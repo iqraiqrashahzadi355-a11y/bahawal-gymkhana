@@ -263,17 +263,17 @@ export default function Page() {
             </p>
 </div>
 
-<div className="grid grid-cols-3 gap-space-sm py-space-sm bg-surface-container rounded p-space-md">
+<div className="grid grid-cols-3 gap-space-xs sm:gap-space-sm py-space-sm bg-surface-container rounded p-space-sm sm:p-space-md">
 <div className="flex flex-col">
-<span className="font-headline-lg text-headline-lg text-primary leading-tight">1954</span>
+<span className="font-headline-lg text-[19px] sm:text-headline-md md:text-headline-lg text-primary leading-tight break-words">1954</span>
 <span className="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">Foundation</span>
 </div>
 <div className="flex flex-col">
-<span className="font-headline-lg text-headline-lg text-primary leading-tight">1,200+</span>
+<span className="font-headline-lg text-[19px] sm:text-headline-md md:text-headline-lg text-primary leading-tight break-words">1,200+</span>
 <span className="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">Active Patrons</span>
 </div>
 <div className="flex flex-col">
-<span className="font-headline-lg text-headline-lg text-primary leading-tight">18 Acres</span>
+<span className="font-headline-lg text-[19px] sm:text-headline-md md:text-headline-lg text-primary leading-tight break-words">18 Acres</span>
 <span className="font-label-caps text-label-caps text-on-surface-variant uppercase mt-1">Lush Grounds</span>
 </div>
 </div>
