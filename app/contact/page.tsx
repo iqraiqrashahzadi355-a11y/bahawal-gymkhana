@@ -182,24 +182,15 @@ export default function Page() {
 </div>
 </div>
 
-<div className="relative w-full h-56 rounded-lg overflow-hidden bg-primary-container group shadow-inner">
-<div className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="Detailed vintage aerial cartographic view of Bahawal Gymkhana estate on Club Road Bahawalpur featuring colonial arches, orange clay tennis courts, surrounding lush palm gardens, and Noor Mahal backdrop bathed in warm golden twilight." data-location="Bahawal Gymkhana Club, Club Road, Bahawalpur, Pakistan" style={{backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuDJkf5Ffj7Oy9PQaQ0HSE55VTNpKaeMPk4uWeRc3arIg9MHOG0behGixBmgfVgHKyuBc_1a5vnrE6tunQI_rH2WJ56bS8V6PwUb6pdocuTCWgyjf9vABeLk0Lgd5B3ziAtf2bs1IE02eC7KzTPIyjMsWfsHurIf79hh_i0EGrPXnrwf8PgFrsy9rGOe8vbhK1n7PYvpqp1RRvkh6Fv1s2o72DK3TKZ593kR0P5ucvR_vtWP67Nvhy67yg')"}}></div>
-
-<div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-primary/30 pointer-events-none"></div>
-
-<div className="absolute top-3 left-3 bg-surface/95 backdrop-blur-sm px-2.5 py-1.5 rounded shadow-md flex items-center gap-1.5">
-<span className="w-2.5 h-2.5 rounded-full bg-secondary-container"></span>
-<span className="font-label-sm text-label-sm font-bold text-primary">Main Grand Clubhouse</span>
-</div>
-
-<div className="absolute bottom-3 left-3 bg-primary-container/90 text-on-primary px-2.5 py-1 rounded text-[11px] font-mono">
-                29°23'44.2"N 71°40'59.9"E
-              </div>
-
-<div className="absolute bottom-3 right-3 bg-surface/90 text-primary px-2 py-1 rounded flex items-center gap-1 font-label-sm text-label-sm font-semibold">
-<span className="material-symbols-outlined text-secondary text-[16px]">navigation</span>
-<span>Civil Lines Gate</span>
-</div>
+<div className="relative w-full h-56 rounded-lg overflow-hidden bg-primary-container shadow-inner">
+<iframe
+  title="Bahawal Gymkhana location map"
+  src="https://www.google.com/maps?q=Bahawal+Gymkhana+Bahawalpur&output=embed"
+  className="w-full h-full border-0"
+  loading="lazy"
+  referrerPolicy="no-referrer-when-downgrade"
+  allowFullScreen
+></iframe>
 </div>
 
 <div className="mt-4 pt-4 border-t border-surface-container flex flex-col sm:flex-row items-center justify-between gap-3">
