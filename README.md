@@ -44,9 +44,7 @@ npm run dev
 Open http://localhost:3000
 
 ## Notes
-- Images are temporary Stitch-generated placeholder URLs (`googleusercontent.com`).
-  Replace them with your own photos before deploying long-term, since Google
-  doesn't guarantee those links stay valid.
+
 - Google Fonts (Playfair Display, Plus Jakarta Sans, Material Symbols) load via
   `<link>` tags in `app/layout.tsx` — no build-time fetch required, works out of
   the box on Vercel.
