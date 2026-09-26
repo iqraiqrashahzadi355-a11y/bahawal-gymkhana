@@ -19,12 +19,12 @@ Live site: https://bahawal-gymkhana.vercel.app/
 ### Home
 | Desktop | Mobile |
 |---|---|
-| ![Home Desktop](screenshots/bahawal-gymkhana.vercel.app%20Home%20pc.png) | ![Home Mobile](https://github.com/iqraiqrashahzadi355-a11y/bahawal-gymkhana/blob/fe1be0fc30223ce351b6c4e708ce6b44d30fcdc6/Screenshots/bahawal-gymkhana.vercel.app%20Home%20MOBILE.png) |
+| ![Home Desktop](https://github.com/iqraiqrashahzadi355-a11y/bahawal-gymkhana/blob/393247e973e714ebb8200f51a83fbaa9ecf9efa8/Screenshots/bahawal-gymkhana.vercel.app%20Home%20pc.png) | ![Home Mobile](https://github.com/iqraiqrashahzadi355-a11y/bahawal-gymkhana/blob/fe1be0fc30223ce351b6c4e708ce6b44d30fcdc6/Screenshots/bahawal-gymkhana.vercel.app%20Home%20MOBILE.png) |
 
 ### Facilities
 | Desktop | Mobile |
 |---|---|
-| ![Facilities Desktop](screenshots/bahawal-gymkhana.vercel.app-facilities%20PC.png) | ![Facilities Mobile](screenshots/bahawal-gymkhana.vercel.app-facilities%20mobile.png) |
+| ![Facilities Desktop](https://github.com/iqraiqrashahzadi355-a11y/bahawal-gymkhana/blob/393247e973e714ebb8200f51a83fbaa9ecf9efa8/Screenshots/bahawal-gymkhana.vercel.app-facilities%20PC.png) | ![Facilities Mobile](https://github.com/iqraiqrashahzadi355-a11y/bahawal-gymkhana/blob/393247e973e714ebb8200f51a83fbaa9ecf9efa8/Screenshots/bahawal-gymkhana.vercel.app-facilities%20mobile.png) |
 
 ### Gallery
 | Desktop | Mobile |
