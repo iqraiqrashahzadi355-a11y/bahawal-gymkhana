@@ -12,6 +12,50 @@ into React/Tailwind components.
 
 https://bahawal-gymkhana.vercel.app/
 
+## Screenshots
+
+Live site: https://bahawal-gymkhana.vercel.app/
+
+### Home
+| Desktop | Mobile |
+|---|---|
+| ![Home Desktop](screenshots/bahawal-gymkhana.vercel.app%20Home%20pc.png) | ![Home Mobile](screenshots/bahawal-gymkhana.vercel.app%20Home%20MOBILE.png) |
+
+### Facilities
+| Desktop | Mobile |
+|---|---|
+| ![Facilities Desktop](screenshots/bahawal-gymkhana.vercel.app-facilities%20PC.png) | ![Facilities Mobile](screenshots/bahawal-gymkhana.vercel.app-facilities%20mobile.png) |
+
+### Gallery
+| Desktop | Mobile |
+|---|---|
+| ![Gallery Desktop](screenshots/bahawal-gymkhana.vercel.app-gallery%20PC.png) | ![Gallery Mobile](screenshots/bahawal-gymkhana.vercel.app-gallery%20mobile.png) |
+
+### Membership
+| Desktop | Mobile |
+|---|---|
+| ![Membership Desktop](screenshots/bahawal-gymkhana.vercel.app-membership%20PC.png) | ![Membership Mobile](screenshots/bahawal-gymkhana.vercel.app-membership%20Moblie.png) |
+
+### Reviews
+| Desktop | Mobile |
+|---|---|
+| ![Reviews Desktop](screenshots/bahawal-gymkhana.vercel.app-reviews%20PC.png) | ![Reviews Mobile](screenshots/bahawal-gymkhana.vercel.app-reviews%20Mobile.png) |
+
+### Contact
+| Desktop | Mobile |
+|---|---|
+| ![Contact Desktop](screenshots/bahawal-gymkhana.vercel.app-contact%20PC.png) | ![Contact Mobile](screenshots/bahawal-gymkhana.vercel.app-contact%20mobile.png) |
+
+### History
+| Desktop | Mobile |
+|---|---|
+| ![History Desktop](screenshots/bahawal-gymkhana.vercel.app-history%20pc.png) | ![History Mobile](screenshots/bahawal-gymkhana.vercel.app-history%20mobile.png) |
+
+### Terms & Policies
+| Desktop | Mobile |
+|---|---|
+| ![Terms Desktop](screenshots/bahawal-gymkhana.vercel.app-terms%20and%20polices%20PC.png) | ![Terms Mobile](screenshots/bahawal-gymkhana.vercel.app-terms%20and%20polices%20mobile.png) |
+
 ## Pages (routing)
 - `/` — Home
 - `/facilities` — Tennis, squash, gym, pool, lawn, library, cigar room, snooker
