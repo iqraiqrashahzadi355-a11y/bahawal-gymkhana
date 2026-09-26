@@ -29,32 +29,38 @@ https://bahawal-gymkhana.vercel.app/
 ### Gallery
 | Desktop | Mobile |
 |---|---|
-| ![Gallery Desktop](Screenshots/bahawal-gymkhana.vercel.app-gallery%20PC.png) | ![Gallery Mobile](Screenshots/bahawal-gymkhana.vercel.app-gallery%20mobile.png) |
+| ![Gallery Desktop](Screenshots/bahawal-gymkhana.vercel.app-gallery%20PC.png) 
+| ![Gallery Mobile](Screenshots/bahawal-gymkhana.vercel.app-gallery%20mobile.png) |
 
 ### Membership
 | Desktop | Mobile |
 |---|---|
-| ![Membership Desktop](Screenshots/bahawal-gymkhana.vercel.app-membership%20PC.png) | ![Membership Mobile](Screenshots/bahawal-gymkhana.vercel.app-membership%20Moblie.png) |
+| ![Membership Desktop](Screenshots/bahawal-gymkhana.vercel.app-membership%20PC.png) 
+| ![Membership Mobile](Screenshots/bahawal-gymkhana.vercel.app-membership%20Moblie.png) |
 
 ### Reviews
 | Desktop | Mobile |
 |---|---|
-| ![Reviews Desktop](Screenshots/bahawal-gymkhana.vercel.app-reviews%20PC.png) | ![Reviews Mobile](Screenshots/bahawal-gymkhana.vercel.app-reviews%20Mobile.png) |
+| ![Reviews Desktop](Screenshots/bahawal-gymkhana.vercel.app-reviews%20PC.png) 
+| ![Reviews Mobile](Screenshots/bahawal-gymkhana.vercel.app-reviews%20Mobile.png) |
 
 ### Contact
 | Desktop | Mobile |
 |---|---|
-| ![Contact Desktop](Screenshots/bahawal-gymkhana.vercel.app-contact%20PC.png) | ![Contact Mobile](Screenshots/bahawal-gymkhana.vercel.app-contact%20mobile.png) |
+| ![Contact Desktop](Screenshots/bahawal-gymkhana.vercel.app-contact%20PC.png) 
+| ![Contact Mobile](Screenshots/bahawal-gymkhana.vercel.app-contact%20mobile.png) |
 
 ### History
 | Desktop | Mobile |
 |---|---|
-| ![History Desktop](Screenshots/bahawal-gymkhana.vercel.app-history%20pc.png) | ![History Mobile](Screenshots/bahawal-gymkhana.vercel.app-history%20mobile.png) |
+| ![History Desktop](Screenshots/bahawal-gymkhana.vercel.app-history%20pc.png) 
+| ![History Mobile](Screenshots/bahawal-gymkhana.vercel.app-history%20mobile.png) |
 
 ### Terms & Policies
 | Desktop | Mobile |
 |---|---|
-| ![Terms Desktop](Screenshots/bahawal-gymkhana.vercel.app-terms%20and%20polices%20PC.png) | ![Terms Mobile](Screenshots/bahawal-gymkhana.vercel.app-terms%20and%20polices%20mobile.png) |
+| ![Terms Desktop](Screenshots/bahawal-gymkhana.vercel.app-terms%20and%20polices%20PC.png) 
+| ![Terms Mobile](Screenshots/bahawal-gymkhana.vercel.app-terms%20and%20polices%20mobile.png) |
 
 ## Pages (routing)
 - `/` — Home
