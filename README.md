@@ -19,7 +19,7 @@ Live site: https://bahawal-gymkhana.vercel.app/
 ### Home
 | Desktop | Mobile |
 |---|---|
-| ![Home Desktop](screenshots/bahawal-gymkhana.vercel.app%20Home%20pc.png) | ![Home Mobile](screenshots/bahawal-gymkhana.vercel.app%20Home%20MOBILE.png) |
+| ![Home Desktop](screenshots/bahawal-gymkhana.vercel.app%20Home%20pc.png) | ![Home Mobile](Screenshots/bahawal-gymkhana.vercel.app Home MOBILE.png) |
 
 ### Facilities
 | Desktop | Mobile |
