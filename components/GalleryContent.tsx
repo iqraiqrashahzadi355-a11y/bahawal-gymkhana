@@ -1,23 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-
-const GALLERY_ITEMS: { title: string; src: string }[] = [
-  { title: "Golden Hour over the Central Lawn & Veranda", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC1F_NgJ1zG5Lu1fQhzRmpQa1u43V-aCNv4DztAMHS37RUNdkIsl1Og0NK3dtwrvDDDCN4bZ-89tujWKE-U3bUpc4iDToOTKRK5TUOl2PfE3kASA3VIzJRvayPs3kQapgu_u0xr4l14Hgsk0IaE2-oSe5C4CbwcVmTW2ILzPDla-bhECKjLJSU9QA2TLCgWt1QNPsxCJxIOoZJdJNCk00X1p4z9j-8wxIsIsJ98_aMb-e5mE4W2Ge-GSw" },
-  { title: "Men's Singles Clay Court Championship Finals", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBt_y6vw1vg2Rsg2jyVusKSWPvcp6-y-2g4kJkfdy4xCw4F2qDlRB_4Ww4rgVkEFOpXVf4hYMMPvVBekoetwInul-7ATcdPgnWikRuS0WF6SZ7JTBLeXWZg8wMiQ16zAWyvP3mTDx5HLlj5YdaANhn6ttf4mi43V9ynKOYfZVaK13gqbJ01nUo6ykKtXVNVvkJXdLRzLzkphHQqfq75eLc0gB3J0-wooLzNQBgyZ-mSMXFLGkvM48biHw" },
-  { title: "The Heritage Library Corner", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3nndJA4-6wTRPxTIAkG-hbtmdRW0SNyWYvbP2tWCDhFLHzt_bhZOzOLgTt5VHCYNCtRtd562Q2RlfGBXeqV4pozu5L4jHbrij7w9iGr3cuu87idqXTPHybn8eUcGeS0jINta1MfZ0vwy2pW985Z_bpyPpGu_n7_EoAanVdNQjGkNgz9rEMegGCn6yUJBh2SIkGD9OPm5y20jhTYN2wHC3K2RTPa8ag_FEYcY_cszLqyzVrdiZuDj2BQ" },
-  { title: "The Vintage Snooker Saloon", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCBNRBAVeWAPY4uyBQ8XQtXzo8FynKXYD9uBkzZtqfm2TdpMshf7CO_NObquP1sg66LPQQ_VW3Yu-pYl2_Le8ucscJqnkq_JSyRe_vDkNvVB4_HCEAfbTNKWrKfpOzYkekmlUs-IBZTTANR7U5M7in2TyFKEALAenrvsljFjdtxPOFhf4bRUXWLYYbzaMtMGRnz7qsRRXWYoFZM3nZIgY9udF168Qj5eRJU6YjyQp1S8fnc02g1uUsBzg" },
-  { title: "Annual Founders' Gala Dinner", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAn4zKntzSpi2hkTzF53hvMq0L0PyR8AEJ4wYVL9S31ybfjx3HIN__EUAfbrsDbrpPGn6zm68FZeiPTPFgtoB84090uNqsQLNYpyQaIjwxQlqFsKCLGZwWTIACVpbHkHgmZpA5b2VxClwhkcdCHiUwU8AFl-0lPAHOH1RmoOXdopLsijXXqAKJsz1cYTjK8R344pPrX9iPSme0msihPB7BW6LmMKBLIZMfCoyIdEsyWnJYuvvpwKhhEnQ" },
-  { title: "Morning Swim in the Olympic Pool", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDsDFL-uQfFxPdeMjRLhWai5ANb39BWfB4gALmkghw1GsDp_gzxJsIyr9BHtHimDpsbRhmwPtITTbMefhy4GwPTKm7Ao2GvgPt5wHktrnFP9DdgcDsy0__vSNhBZQTe1leFfmMV_LWhWW6CM_sIhBCwDGPmiJI6tm4YQBUrQGB0TgEGRgMkw1ZYZsXyuDPbvjUBrJGLxgiT5Du8ST6onb51E767xzHOtraq0wez-hUX2T_LD1Y6DEav_Q" },
-  { title: "Afternoon High Tea on the West Portico", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAz2Cvw0Cw3G1HJdJXywdQ6p1Y3TgrddjklgyZBu-p3eqHgcSz5yWqkBd21leaXRaGgyjkQtWEVmwGZXJONmHqZFXeIzetbPFM7-6y_g8j1l3_uQnzu-CJVE4RHbNiSEcYL-WO90ipTsDUpips4irLugWYPK_E0nLA3WrriMlFtNDC6KPVmme2-13YuILsUNNfCykAMt4UJC5k4z13CjQNmrP953ErA-1yiwJehf21JrgkCNE6FC54AFw" },
-  { title: "Squash Open Semi-Finals", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAcf0yfyTY_hsx0G_ax7SvBdFuLCJELRHGtSiX6Z04t6dbEvi1e00vg2wp-S9AboFibKu_Uj3SOTWTAEjTf444We2waeyjjRPKQp5us9h8imatRemxeczPV5-2oUl4Y79Lh3CLkowcUVMxpV1mM9_H8FQf7nF8gpboTgyIYzbskgQcJjLJ7pdjFUPAeVSwlj50etDCpEdpEx3esLmSwJADWgdcmw7FyxTwB1fBkzqhyPBjbhDFXhGCWPQ" },
-  { title: "The Humidor & Cigar Lounge", src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAeCSAY6hCvTUzz94XF6jO2ItK1QmD8basqbYeu_-WDTfcx4FQKMtYiOFkY3Lc_mcGOCQT8tmPArfFaOV5qgMDbpPpuoL9kf-sYZ8SHiBYdiWpNY0qb2qitBzxg06BGMq522MqRiQs6d2Ugo0k-jXeGLAW04B2bexZkHwgxPWp_RHP-56WhLM6Q43S7MVBrIitV32VEMjwzkgLyaiCPP5mJrDRaM1ExDUdy_iLvnMiY_a13L44XozyM8w" }
-];
+import type { GalleryItem } from "@/lib/gallery";
 
 export default function GalleryContent() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [galleryItems, setGalleryItems] = useState<GalleryItem[]>([]);
+  const [galleryLoading, setGalleryLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/gallery")
+      .then((res) => res.json())
+      .then((json) => setGalleryItems(json.items))
+      .catch(() => setGalleryItems([]))
+      .finally(() => setGalleryLoading(false));
+  }, []);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [archiveModalOpen, setArchiveModalOpen] = useState(false);
   const [archiveStatus, setArchiveStatus] = useState<
@@ -126,289 +125,84 @@ export default function GalleryContent() {
 <div className="max-w-[1280px] mx-auto">
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-lg" id="gallery-grid">
 
-<article className={"gallery-card group lg:col-span-2 bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "veranda" ? "" : " hidden")}>
-<div className="relative w-full h-80 sm:h-96 overflow-hidden">
-<img alt="Golden Hour over the Central Lawn &amp; Veranda" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Wide panoramic evening twilight view of the historic colonial Bahawal Gymkhana clubhouse with lit arched verandas, a glowing clock tower, warm golden amber lanterns along sprawling pristine green lawns, and members lounging near floodlit red clay tennis courts under an orange sunset in Bahawalpur." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1F_NgJ1zG5Lu1fQhzRmpQa1u43V-aCNv4DztAMHS37RUNdkIsl1Og0NK3dtwrvDDDCN4bZ-89tujWKE-U3bUpc4iDToOTKRK5TUOl2PfE3kASA3VIzJRvayPs3kQapgu_u0xr4l14Hgsk0IaE2-oSe5C4CbwcVmTW2ILzPDla-bhECKjLJSU9QA2TLCgWt1QNPsxCJxIOoZJdJNCk00X1p4z9j-8wxIsIsJ98_aMb-e5mE4W2Ge-GSw"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
-<div className="absolute top-4 left-4 flex gap-space-xs">
-<span className="bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-                Lawn &amp; Veranda
+{galleryLoading &&
+  Array.from({ length: 6 }).map((_, i) => (
+    <div
+      key={`skeleton-${i}`}
+      className="bg-surface-container-lowest rounded-xl overflow-hidden animate-pulse"
+    >
+      <div className="h-80 bg-surface-container-high"></div>
+      <div className="p-space-lg flex flex-col gap-space-sm">
+        <div className="h-3 w-1/3 bg-surface-container-high rounded"></div>
+        <div className="h-5 w-2/3 bg-surface-container-high rounded"></div>
+        <div className="h-3 w-full bg-surface-container-high rounded"></div>
+      </div>
+    </div>
+  ))}
+
+{!galleryLoading &&
+  galleryItems
+    .filter((g) => activeFilter === "all" || g.category === activeFilter)
+    .map((g) => (
+      <article
+        key={g.id}
+        className={
+          "gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" +
+          (g.featured ? " lg:col-span-2" : "")
+        }
+      >
+        <div className={"relative w-full overflow-hidden " + (g.featured ? "h-80 sm:h-96" : "h-80")}>
+          <img
+            alt={g.alt}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+            src={g.image}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
+          <div className="absolute top-4 left-4 flex gap-space-xs">
+            {g.badges.map((badge) => (
+              <span
+                key={badge}
+                className="bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded"
+              >
+                {badge}
               </span>
-<span className="bg-surface-container-low/90 backdrop-blur-md text-primary font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-                Featured Cover
-              </span>
-</div>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(0)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>Central North Lawns</span>
-<span>November 2024</span>
-</div>
-<h3 className="font-headline-sm text-headline-sm text-primary mb-space-xs">
-                Golden Hour over the Central Lawn &amp; Veranda
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                As dusk falls over Bahawalpur, the 1950s arched colonnades illuminate in warm amber, framing active clay matches and lawn tea conversations.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 001/Veranda</span>
-<span className="material-symbols-outlined text-[18px]">photo_camera</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "facilities" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="Men's Singles Clay Court Championship Finals" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Intense tennis rally on a deep terracotta red clay court at Bahawal Gymkhana under evening floodlights, dynamic clay dust kicking up from a forehand stroke by an athlete dressed in crisp white heritage tennis kit, deep espresso shadows and warm lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt_y6vw1vg2Rsg2jyVusKSWPvcp6-y-2g4kJkfdy4xCw4F2qDlRB_4Ww4rgVkEFOpXVf4hYMMPvVBekoetwInul-7ATcdPgnWikRuS0WF6SZ7JTBLeXWZg8wMiQ16zAWyvP3mTDx5HLlj5YdaANhn6ttf4mi43V9ynKOYfZVaK13gqbJ01nUo6ykKtXVNVvkJXdLRzLzkphHQqfq75eLc0gB3J0-wooLzNQBgyZ-mSMXFLGkvM48biHw"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Championship Facilities
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(1)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>Clay Courts 1 &amp; 2</span>
-<span>October 2024</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                Men's Singles Clay Court Finals
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                High-tension baseline rally during the 69th Annual Punjab Invitational Trophy, played on the freshly laid red clay grounds.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 014/Sports</span>
-<span className="material-symbols-outlined text-[18px]">sports_tennis</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "heritage" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="The Heritage Library Corner" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Quiet vintage library corner inside Bahawal Gymkhana Club with floor-to-ceiling dark teak bookshelves, tufted brown leather wingback armchairs, warm brass reading lamps casting warm light over leather-bound legal and sporting ledgers from the 1950s." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3nndJA4-6wTRPxTIAkG-hbtmdRW0SNyWYvbP2tWCDhFLHzt_bhZOzOLgTt5VHCYNCtRtd562Q2RlfGBXeqV4pozu5L4jHbrij7w9iGr3cuu87idqXTPHybn8eUcGeS0jINta1MfZ0vwy2pW985Z_bpyPpGu_n7_EoAanVdNQjGkNgz9rEMegGCn6yUJBh2SIkGD9OPm5y20jhTYN2wHC3K2RTPa8ag_FEYcY_cszLqyzVrdiZuDj2BQ"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Clubhouse &amp; Heritage
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(2)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>East Wing Memorial Library</span>
-<span>December 2024</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                The Heritage Library Corner
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Hand-carved Sheesham bookcases holding foundational club treaties, regional flora studies, and peaceful morning reading alcoves.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 042/Archival</span>
-<span className="material-symbols-outlined text-[18px]">menu_book</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "facilities" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="The Vintage Snooker Saloon" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Interior of an authentic vintage gentlemen snooker room with two championship green baize slate tables, polished mahogany turned legs, brass hanging pendant lights illuminating cue balls, framed black and white portraits on paneled walls." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBNRBAVeWAPY4uyBQ8XQtXzo8FynKXYD9uBkzZtqfm2TdpMshf7CO_NObquP1sg66LPQQ_VW3Yu-pYl2_Le8ucscJqnkq_JSyRe_vDkNvVB4_HCEAfbTNKWrKfpOzYkekmlUs-IBZTTANR7U5M7in2TyFKEALAenrvsljFjdtxPOFhf4bRUXWLYYbzaMtMGRnz7qsRRXWYoFZM3nZIgY9udF168Qj5eRJU6YjyQp1S8fnc02g1uUsBzg"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Championship Facilities
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(3)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>Billiards Room 1</span>
-<span>January 2025</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                The Vintage Snooker Saloon
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Pristine English baize tables, brass scoreboards, and the timeless click of ivory cue balls during the winter club ladder matches.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 028/Saloon</span>
-<span className="material-symbols-outlined text-[18px]">sports_cricket</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "social" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="Annual Founders' Gala Dinner" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Lavish evening outdoor gala dinner on the manicured lawns of Bahawal Gymkhana Club, long banquet tables decorated with white linen, brass candelabras, floral arrangements, warm string fairy lights overhead, distinguished patrons in traditional formal Sherwanis and tuxedos." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAn4zKntzSpi2hkTzF53hvMq0L0PyR8AEJ4wYVL9S31ybfjx3HIN__EUAfbrsDbrpPGn6zm68FZeiPTPFgtoB84090uNqsQLNYpyQaIjwxQlqFsKCLGZwWTIACVpbHkHgmZpA5b2VxClwhkcdCHiUwU8AFl-0lPAHOH1RmoOXdopLsijXXqAKJsz1cYTjK8R344pPrX9iPSme0msihPB7BW6LmMKBLIZMfCoyIdEsyWnJYuvvpwKhhEnQ"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Social &amp; Events
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(4)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>The Grand Lawn</span>
-<span>November 2024</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                Annual Founders' Gala Dinner
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Celebrating 70 years of fellowship. Patron families gather under woven canopies for formal multi-course dinners and chamber orchestra.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 063/Gala</span>
-<span className="material-symbols-outlined text-[18px]">celebration</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "facilities" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="Morning Swim in the Olympic Pool" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Sunlit morning view of an outdoor 50-meter Olympic swimming pool with crystal clear turquoise water, surrounded by sandstone pavers, elegant poolside white lounge chairs, palm trees, and the arched classical club pavilion reflected in the calm water." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDFL-uQfFxPdeMjRLhWai5ANb39BWfB4gALmkghw1GsDp_gzxJsIyr9BHtHimDpsbRhmwPtITTbMefhy4GwPTKm7Ao2GvgPt5wHktrnFP9DdgcDsy0__vSNhBZQTe1leFfmMV_LWhWW6CM_sIhBCwDGPmiJI6tm4YQBUrQGB0TgEGRgMkw1ZYZsXyuDPbvjUBrJGLxgiT5Du8ST6onb51E767xzHOtraq0wez-hUX2T_LD1Y6DEav_Q"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Championship Facilities
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(5)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>Aquatic Pavilion</span>
-<span>August 2024</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                Morning Swim at the Aquatic Pavilion
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Crystal turquoise water mirroring the neoclassical arches. Member dawn swim regimens run daily from 06:00 under certified coaching supervision.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 019/Aquatics</span>
-<span className="material-symbols-outlined text-[18px]">pool</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "veranda" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="Afternoon High Tea on the West Portico" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Afternoon high tea service set on a white wrought iron table on a shaded colonial veranda portico overlooking lush lawn gardens, three-tiered silver pastry stand with scones and finger sandwiches, steaming porcelain teapot, warm natural afternoon light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAz2Cvw0Cw3G1HJdJXywdQ6p1Y3TgrddjklgyZBu-p3eqHgcSz5yWqkBd21leaXRaGgyjkQtWEVmwGZXJONmHqZFXeIzetbPFM7-6y_g8j1l3_uQnzu-CJVE4RHbNiSEcYL-WO90ipTsDUpips4irLugWYPK_E0nLA3WrriMlFtNDC6KPVmme2-13YuILsUNNfCykAMt4UJC5k4z13CjQNmrP953ErA-1yiwJehf21JrgkCNE6FC54AFw"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Lawn &amp; Veranda
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(6)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>Governor's Portico</span>
-<span>September 2024</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                High Tea on the West Portico
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Traditional afternoon tea served with sterling silver service, Earl Grey infusions, clotted cream pastries, and uninterrupted desert breezes.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 055/Culinary</span>
-<span className="material-symbols-outlined text-[18px]">local_cafe</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "facilities" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="Squash Open Semi-Finals" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Fast-paced squash tournament action view through the transparent back glass wall of an international regulation squash court, spectators in tiered seating observing two players lunging for a drop shot on clean maple flooring under intense spotlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcf0yfyTY_hsx0G_ax7SvBdFuLCJELRHGtSiX6Z04t6dbEvi1e00vg2wp-S9AboFibKu_Uj3SOTWTAEjTf444We2waeyjjRPKQp5us9h8imatRemxeczPV5-2oUl4Y79Lh3CLkowcUVMxpV1mM9_H8FQf7nF8gpboTgyIYzbskgQcJjLJ7pdjFUPAeVSwlj50etDCpEdpEx3esLmSwJADWgdcmw7FyxTwB1fBkzqhyPBjbhDFXhGCWPQ"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Championship Facilities
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(7)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>Glass Courts 1 &amp; 2</span>
-<span>December 2024</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                Divisional Squash Open Semi-Finals
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Electrifying five-game decider viewed through the rear glass gallery by veteran club players and junior academy prospects.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 033/Rackets</span>
-<span className="material-symbols-outlined text-[18px]">sports_handball</span>
-</div>
-</div>
-</article>
-
-<article className={"gallery-card group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col" + (activeFilter === "all" || activeFilter === "heritage" ? "" : " hidden")}>
-<div className="relative w-full h-80 overflow-hidden">
-<img alt="The Humidor &amp; Cigar Lounge" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" data-alt="Intimate atmosphere of an opulent heritage cigar lounge with rich polished mahogany wood hearth, warm crackling embers, Spanish cedar humidors, deep oxblood leather Chesterfield couches, and quiet gentleman conversation in the evening glow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeCSAY6hCvTUzz94XF6jO2ItK1QmD8basqbYeu_-WDTfcx4FQKMtYiOFkY3Lc_mcGOCQT8tmPArfFaOV5qgMDbpPpuoL9kf-sYZ8SHiBYdiWpNY0qb2qitBzxg06BGMq522MqRiQs6d2Ugo0k-jXeGLAW04B2bexZkHwgxPWp_RHP-56WhLM6Q43S7MVBrIitV32VEMjwzkgLyaiCPP5mJrDRaM1ExDUdy_iLvnMiY_a13L44XozyM8w"/>
-<div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-<span className="absolute top-4 left-4 bg-primary text-secondary-container font-label-caps text-label-caps uppercase px-space-sm py-1 rounded">
-              Clubhouse &amp; Heritage
-            </span>
-<button aria-label="Enlarge image" onClick={() => setLightboxIndex(8)} className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md" type="button">
-<span className="material-symbols-outlined text-[20px]">zoom_in</span>
-</button>
-</div>
-<div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
-<div>
-<div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
-<span>The Governor's Hearth</span>
-<span>January 2025</span>
-</div>
-<h3 className="font-title-md text-title-md text-primary mb-space-xs font-semibold">
-                The Humidor &amp; Cigar Lounge
-              </h3>
-<p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                Reserved for patrons and distinguished guests. Clad in natural cedar paneling with climate-monitored private locker reserves.
-              </p>
-</div>
-<div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
-<span>Plate No. 071/Annex</span>
-<span className="material-symbols-outlined text-[18px]">smoking_rooms</span>
-</div>
-</div>
-</article>
+            ))}
+          </div>
+          <button
+            aria-label="Enlarge image"
+            onClick={() => setLightboxIndex(galleryItems.findIndex((item) => item.id === g.id))}
+            className="absolute bottom-4 right-4 w-10 h-10 rounded bg-surface/90 text-primary hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-md"
+            type="button"
+          >
+            <span className="material-symbols-outlined text-[20px]">zoom_in</span>
+          </button>
+        </div>
+        <div className="p-space-lg flex flex-col justify-between flex-grow bg-surface-container-lowest">
+          <div>
+            <div className="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm mb-1">
+              <span>{g.location}</span>
+              <span>{g.date}</span>
+            </div>
+            <h3
+              className={
+                g.featured
+                  ? "font-headline-sm text-headline-sm text-primary mb-space-xs"
+                  : "font-title-md text-title-md text-primary mb-space-xs font-semibold"
+              }
+            >
+              {g.title}
+            </h3>
+            <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              {g.description}
+            </p>
+          </div>
+          <div className="mt-space-md pt-space-sm flex items-center justify-between text-secondary font-label-caps text-label-caps uppercase">
+            <span>{g.plate}</span>
+            <span className="material-symbols-outlined text-[18px]">{g.icon}</span>
+          </div>
+        </div>
+      </article>
+    ))}
 </div>
 </div>
 </section></Reveal>
@@ -471,7 +265,7 @@ export default function GalleryContent() {
 <div className="relative max-w-4xl w-full bg-surface-container-lowest rounded-xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
 <div className="relative w-full h-96 sm:h-[480px] bg-primary flex items-center justify-center overflow-hidden">
 {lightboxIndex !== null && (
-<img alt={GALLERY_ITEMS[lightboxIndex].title} className="w-full h-full object-cover" src={GALLERY_ITEMS[lightboxIndex].src}/>
+<img alt={galleryItems[lightboxIndex]?.title} className="w-full h-full object-cover" src={galleryItems[lightboxIndex]?.image}/>
 )}
 <button aria-label="Close modal" onClick={() => setLightboxIndex(null)} className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary/80 text-surface hover:bg-secondary-container hover:text-primary-container flex items-center justify-center transition-colors shadow-lg" type="button">
 <span className="material-symbols-outlined text-[24px]">close</span>
@@ -483,7 +277,7 @@ export default function GalleryContent() {
             Archive
           </span>
 <h3 className="font-headline-sm text-headline-sm text-primary mt-2">
-            {lightboxIndex !== null ? GALLERY_ITEMS[lightboxIndex].title : ""}
+            {lightboxIndex !== null ? galleryItems[lightboxIndex]?.title : ""}
           </h3>
 </div>
 <div className="flex items-center gap-space-sm">

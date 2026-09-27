@@ -76,10 +76,10 @@
   --radius-xl: 0.75rem;
 
   /* Fonts */
-  --font-display-hero: "Playfair Display", serif;
-  --font-headline-lg: "Playfair Display", serif;
-  --font-headline-md: "Playfair Display", serif;
-  --font-headline-sm: "Playfair Display", serif;
+  --font-display-hero: "Sora", sans-serif;
+  --font-headline-lg: "Sora", sans-serif;
+  --font-headline-md: "Sora", sans-serif;
+  --font-headline-sm: "Sora", sans-serif;
   --font-title-md: "Plus Jakarta Sans", sans-serif;
   --font-body-lg: "Plus Jakarta Sans", sans-serif;
   --font-body-md: "Plus Jakarta Sans", sans-serif;
@@ -446,5 +446,88 @@ main > *:nth-child(n + 6) {
   .px-margin-mobile {
     padding-left: var(--spacing-margin);
     padding-right: var(--spacing-margin);
+  }
+}
+
+/* ---- Modern "soft gradient depth" container treatment ----
+   Applies to light-surface cards site-wide (facility/gallery/review
+   cards, modal panels, form panels) without touching dark blocks. */
+[class*="-card"],
+[class*="bg-surface-container-lowest"][class*="rounded"] {
+  position: relative;
+  background-image: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(62, 39, 35, 0.02) 100%
+  );
+  background-color: var(--color-surface-container-lowest);
+  box-shadow:
+    0 1px 1px rgba(62, 39, 35, 0.04),
+    0 12px 28px -8px rgba(62, 39, 35, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(62, 39, 35, 0.06);
+}
+[class*="-card"]:hover,
+[class*="bg-surface-container-lowest"][class*="rounded"]:hover {
+  box-shadow:
+    0 2px 4px rgba(62, 39, 35, 0.06),
+    0 20px 40px -10px rgba(62, 39, 35, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* Subtle gradient wash behind the whole page background for depth */
+body {
+  background-image: radial-gradient(
+      ellipse 1200px 600px at 15% -5%,
+      rgba(242, 169, 59, 0.06),
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 1000px 500px at 85% 10%,
+      rgba(62, 39, 35, 0.04),
+      transparent 60%
+    );
+  background-attachment: fixed;
+}
+
+/* ---- Staggered grid entrance (facility/gallery/review/membership grids) ---- */
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+[class*="grid-cols"] > [class*="-card"] {
+  animation: cardFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+[class*="grid-cols"] > [class*="-card"]:nth-child(1) {
+  animation-delay: 0.02s;
+}
+[class*="grid-cols"] > [class*="-card"]:nth-child(2) {
+  animation-delay: 0.08s;
+}
+[class*="grid-cols"] > [class*="-card"]:nth-child(3) {
+  animation-delay: 0.14s;
+}
+[class*="grid-cols"] > [class*="-card"]:nth-child(4) {
+  animation-delay: 0.2s;
+}
+[class*="grid-cols"] > [class*="-card"]:nth-child(n + 5) {
+  animation-delay: 0.26s;
+}
+
+/* ---- Floating WhatsApp button pulse ---- */
+@keyframes whatsapp-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
   }
 }
