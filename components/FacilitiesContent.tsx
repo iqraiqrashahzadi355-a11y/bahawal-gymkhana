@@ -313,10 +313,10 @@ export default function FacilitiesContent() {
 <span className="material-symbols-outlined text-[18px]">calendar_today</span>
                 Book a Facility Session
               </button>
-<Link href="/contact" className="inline-flex items-center justify-center gap-1.5 px-space-md py-3 rounded-lg bg-transparent text-primary hover:bg-surface-container font-label-md text-label-md uppercase transition-colors">
+<a href="/Bahawal-Gymkhana-Prospectus.pdf" download className="inline-flex items-center justify-center gap-1.5 px-space-md py-3 rounded-lg bg-transparent text-primary hover:bg-surface-container font-label-md text-label-md uppercase transition-colors">
 <span className="material-symbols-outlined text-[18px]">download</span>
                 Download Academy Prospectus
-              </Link>
+              </a>
 </div>
 </div>
 
