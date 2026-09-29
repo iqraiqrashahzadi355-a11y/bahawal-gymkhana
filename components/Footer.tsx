@@ -199,7 +199,7 @@ export default function Footer() {
 
         <div className="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm text-on-primary-container font-label-sm text-label-sm border-t border-on-primary-container/15">
           <p className="pt-space-sm md:pt-0">
-            © 2025 Bahawal Gymkhana Club. All Rights Reserved. Members Only.
+            © 2026 Bahawal Gymkhana Club. All Rights Reserved. Members Only.
           </p>
           <div className="flex items-center gap-space-md flex-wrap justify-center">
             <span className="text-secondary-container">Chivalry</span>
