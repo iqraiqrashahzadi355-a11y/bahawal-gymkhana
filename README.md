@@ -108,4 +108,4 @@ Open http://localhost:3000
 - Colors, spacing, and typography are defined as a Tailwind v4 `@theme` in
   `app/globals.css`.
 - Layout is desktop-first responsive: content is capped at 1280px and grids
-  reflow from 1 column (mobile) up to 3–4 columns (desktop).
+  reflow from 1 column (mobile) up to 3–4 columns (desktop)
