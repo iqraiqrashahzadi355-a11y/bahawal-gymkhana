@@ -4,10 +4,9 @@ A Next.js (App Router + TypeScript + Tailwind v4) website for **Bahawal Gymkhana
 a real members-only heritage sports & social club in Bahawalpur, Pakistan (Google
 Maps profile: 4.4★, 442 reviews) that currently has no website of its own.
 
-Design system: "Heritage Athletic" — Espresso (#3E2723) + Mustard (#F2A93B),
-Playfair Display + Plus Jakarta Sans. Created in Google Stitch, then hand-converted
-into React/Tailwind components.
+## Design system
 
+Created in Google Stitch, then converted to React and Tailwind v4 components. Espresso (`#3E2723`) and mustard (`#F2A93B`) on a warm ivory base. Headings use **Sora**, body text uses **Plus Jakarta Sans**. Cards use soft gradient depth, and lists animate in with staggered entrances.
 ## Live Preview
 
 https://bahawal-gymkhana.vercel.app/
