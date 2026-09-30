@@ -531,3 +531,11 @@ body {
     transform: scale(1.06);
   }
 }
+
+/* Small translucent badge (e.g. facility area tag on photos) —
+   kept separate from the card gradient-depth rule above so the
+   substring class match doesn't turn it into a solid white box. */
+.area-tag-badge {
+  background-color: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(4px);
+}

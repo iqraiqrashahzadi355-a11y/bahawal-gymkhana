@@ -206,9 +206,7 @@ export default function FacilitiesContent() {
             <span className="material-symbols-outlined text-[16px] text-secondary-container">schedule</span>
             {f.schedule}
           </span>
-          <span className="bg-surface-container-lowest/20 backdrop-blur-sm px-2 py-0.5 rounded text-white">
-            {f.areaTag}
-          </span>
+          <span className="area-tag-badge px-2 py-0.5 rounded text-white">{f.areaTag}</span>
         </div>
       </div>
       <div className="p-space-lg flex flex-col flex-1 justify-between">
